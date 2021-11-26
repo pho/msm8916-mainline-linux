@@ -44,6 +44,34 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&usb_id_default>;
 	};
+
+	leds {
+		compatible = "gpio-leds";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&gpio_leds>;
+
+		led-r {
+			gpios = <&msmgpio 22 GPIO_ACTIVE_HIGH>;
+			color = <LED_COLOR_ID_RED>;
+			default-state = "off";
+			function = LED_FUNCTION_INDICATOR;
+		};
+
+		led-g {
+			gpios = <&msmgpio 21 GPIO_ACTIVE_HIGH>;
+			color = <LED_COLOR_ID_GREEN>;
+			default-state = "on";
+			function = LED_FUNCTION_INDICATOR;
+		};
+
+		led-b {
+			gpios = <&msmgpio 20 GPIO_ACTIVE_HIGH>;
+			color = <LED_COLOR_ID_BLUE>;
+			default-state = "off";
+			function = LED_FUNCTION_INDICATOR;
+		};
+	};
 };
 
 &blsp1_uart2 {
@@ -202,6 +230,14 @@
 
 		drive-strength = <8>;
 		bias-pull-up;
+	};
+
+	gpio_leds: gpio-leds {
+		pins = "gpio20", "gpio21", "gpio22";
+		function = "gpio";
+
+		bias-disable;
+		drive-strength = <2>;
 	};
 
 	sim_ctrl: sim-ctrl {
