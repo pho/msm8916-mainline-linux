@@ -20,6 +20,24 @@
 		stdout-path = "serial0";
 	};
 
+	reserved-memory {
+		mpss@86800000 {
+				reg = <0x00 0x86800000 0x00 0x5500000>;
+		};
+
+		wcnss@89300000 {
+				reg = <0x00 0x8BD00000 0x00 0x600000>;
+		};
+
+		venus@89900000 {
+				reg = <0x00 0x8C300000 0x00 0x600000>;
+		};
+
+		mba@8ea00000 {
+				reg = <0x00 0x8C900000 0x00 0x100000>;
+		};
+	};
+
 	usb_id: usb-id {
 		compatible = "linux,extcon-usb-gpio";
 		id-gpios = <&msmgpio 110 GPIO_ACTIVE_HIGH>;
@@ -49,6 +67,13 @@
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&sdc1_clk_on &sdc1_cmd_on &sdc1_data_on>;
 	pinctrl-1 = <&sdc1_clk_off &sdc1_cmd_off &sdc1_data_off>;
+};
+
+&mpss {
+	status = "okay";
+
+	pinctrl-names = "default";
+	pinctrl-0 = <&sim_ctrl>;
 };
 
 &smd_rpm_regulators {
@@ -161,5 +186,14 @@
 
 		drive-strength = <8>;
 		bias-pull-up;
+	};
+
+	sim_ctrl: sim-ctrl {
+		pins = "gpio1", "gpio2";
+		function = "gpio";
+
+		bias-disable;
+		output-low;
+		drive-strength = <2>;
 	};
 };
