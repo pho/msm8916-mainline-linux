@@ -45,6 +45,21 @@
 		pinctrl-0 = <&usb_id_default>;
 	};
 
+	gpio-keys {
+		compatible = "gpio-keys";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&button>;
+
+		label = "GPIO Buttons";
+
+		volume-down {
+			label = "Volume Down";
+			gpios = <&msmgpio 37 GPIO_ACTIVE_HIGH>;
+			linux,code = <KEY_VOLUMEDOWN>;
+		};
+	};
+
 	leds {
 		compatible = "gpio-leds";
 
@@ -230,6 +245,14 @@
 
 		drive-strength = <8>;
 		bias-pull-up;
+	};
+
+	button: button {
+		pins = "gpio37";
+		function = "gpio";
+
+		bias-pull-down;
+		drive-strength = <2>;
 	};
 
 	gpio_leds: gpio-leds {
