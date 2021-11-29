@@ -92,8 +92,6 @@
 };
 
 &usb_hs_phy {
-	v1p8-supply = <&pm8916_l7>;
-	v3p3-supply = <&pm8916_l13>;
 	extcon = <&usb_id>;
 };
 
@@ -112,10 +110,6 @@
 
 &pronto {
 	status = "okay";
-
-	iris {
-		compatible = "qcom,wcn3620";
-	};
 };
 
 &bam_dmux {
