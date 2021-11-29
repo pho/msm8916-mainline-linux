@@ -43,7 +43,7 @@
 		compatible = "gpio-leds";
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&gpio_leds>;
+		pinctrl-0 = <&gpio_leds_default>;
 
 		led-r {
 			gpios = <&msmgpio 22 GPIO_ACTIVE_HIGH>;
@@ -225,7 +225,7 @@
 		drive-strength = <2>;
 	};
 
-	gpio_leds: gpio-leds {
+	gpio_leds_default: gpio-leds-default {
 		pins = "gpio20", "gpio21", "gpio22";
 		function = "gpio";
 
