@@ -32,10 +32,10 @@
 
 		label = "GPIO Buttons";
 
-		volume-down {
-			label = "Volume Down";
+		setup {
+			label = "Setup";
 			gpios = <&msmgpio 37 GPIO_ACTIVE_HIGH>;
-			linux,code = <KEY_VOLUMEDOWN>;
+			linux,code = <KEY_SETUP>;
 		};
 	};
 
